@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Doctor dashboard template-->
+<templates id="doc_dashboard" xml:space="preserve">
+    <t t-name="DoctorDashboard3" >
+        <div class="oh_dashboards" t-ref="root">
+            <p>Hello Js Test</p>
+            <button t-on-click="showAlert">Click Me</button>
+        </div>
+    </t>
+</templates>

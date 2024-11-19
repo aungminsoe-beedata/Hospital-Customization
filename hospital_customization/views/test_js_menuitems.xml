@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="test_js" model="ir.actions.client">
+        <field name="name">Js Dashboard</field>
+        <field name="tag">js_dashboard_tags</field>
+    </record>
+
+    <menuitem id="imaging_test_department_creation_menu" 
+    parent="base_hospital_management.hospital_menu_configuration"
+     name="Js Test" 
+     action='test_js'
+     sequence="7"
+     />
+
+ 
+
+</odoo>

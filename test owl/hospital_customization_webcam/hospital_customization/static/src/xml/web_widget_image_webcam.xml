@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="web.ImageFieldWebcam" t-inherit="web.ImageField" t-inherit-mode="extension" owl="1">
+        <xpath expr="//FileUploader" position="after">
+            <button t-on-click="_openRearCamera" class="btn btn-light border-0 rounded-circle m-1 p-1"
+                    data-tooltip="WebCam" aria-label="WebCam">
+                <i class="fa fa-camera fa-fw"/>
+            </button>
+        </xpath>
+    </t>
+
+    <t t-name="hospital_customization.WebcamDialog" owl="1">
+        <Dialog   size="'xl'">
+            <div>
+                
+                <video t-ref="video" width="100%" height="100%" autoplay="" playsinline=""/>
+                
+            </div>
+
+           
+        </Dialog>
+    </t>
+</templates>

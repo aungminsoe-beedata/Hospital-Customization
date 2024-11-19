@@ -1,0 +1,15 @@
+product.category(python file)
+
+
+product.product_category_form_view (product category form view add two field using xml structure)
+------(product_category_form_view_inherit.xml)
+
+
+
+medical.physicans.py
+
+medical_physicans_form_view.xml
+
+
+
+Add Physician Id in the sale order line field

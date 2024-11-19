@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_imaging_department_name_tree" model="ir.ui.view">
+        <field name="name">imaging.test.departments.tree</field>
+        <field name="model">imaging.test.departments</field>
+        <field name="arch" type="xml">
+            <tree string="Imaging Department Names">
+                <field name="name"/>
+              
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_imaging_department_name_form" model="ir.ui.view">
+        <field name="name">imaging.test.departments.form</field>
+        <field name="model">imaging.test.departments</field>
+        <field name="arch" type="xml">
+            <form string="Imaging Department Name">
+                <sheet>
+                    <group>
+                        <field name="name" string="Name"/>
+                    </group>
+                
+                </sheet>
+
+                <div class = "oe_chatter">
+                    <field name = "message_follower_ids" widget = "mail_followers"/>
+                    <field name = "activity_ids" widget = "mail_activity"/>
+                    <field name = "message_ids" widget = "mail_thread"/>
+                </div>
+             
+            </form>
+        </field>
+    </record>
+</odoo>

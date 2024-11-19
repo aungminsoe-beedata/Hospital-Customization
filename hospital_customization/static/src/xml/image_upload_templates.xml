@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Inherited web.ImageField for adding a button  -->
+<templates id="template" xml:space="preserve">
+    <t t-name="capture_image_field.cameraField" t-inherit="web.ImageField"
+       t-inherit-mode="extension">
+        <xpath expr="//button[hasclass('o_select_file_button')]"
+               position="after">
+            <button class="btn btn-light border-0 rounded-circle o_module_web_cam_image m-1 p-1 btn border-0 rounded-pill fa fa-camera"
+                    data-tooltip="Web Camera" t-on-click="onFileCamera">
+                        </button>
+        </xpath>
+        <!-- <xpath expr="//div[hasclass('d-inline-block')]"
+               position="before">
+                <i t-on-click="onFileCamera" class="o_module_web_cam_image" style='margin-right:20px;'>Upload Web Cam</i>
+        </xpath> -->
+    </t>
+</templates>

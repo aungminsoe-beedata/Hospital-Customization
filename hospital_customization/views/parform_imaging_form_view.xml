@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_imaging_testperform_tree" model="ir.ui.view">
+        <field name="name">imaging.testperform.tree</field>
+        <field name="model">imaging.testperform</field>
+        <field name="arch" type="xml">
+            <tree string="Imaging Tests Names">
+                <field name="name" string="Test#"/>
+                <field name="doctor"/>
+                <field name="department_id"/>
+                <field name="patient"/>
+                <field name="request_date"/>
+                <field name="state" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_imaging_testperform_form" model="ir.ui.view">
+        <field name="name">imaging.testperform.form</field>
+        <field name="model">imaging.testperform</field>
+        <field name="arch" type="xml">
+            <form string="Imaging Test Name">
+             
+
+                    <header>
+                        <field name="state" widget="statusbar"/>
+                        <button name="action_start_test"
+                            invisible="state != 'draft'"
+                            string="Start Test"
+                            class="oe_highlight"
+                            type="object"/>
+                        <button name="action_end_test"
+                            invisible="state != 'test'"
+                            string="End Test"
+                            class="oe_highlight"
+                            type="object"/>
+                        <button name="action_create_invoice"
+                            string="Create Invoice"
+                            invisible="state != 'completed' and 'invoiced'"
+                            class="oe_highlight"
+                            type="object"/>
+                        <button name="action_cancel"
+                            string="Cancel"
+                            class=""
+                            type="object"/>
+
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_invoice" type="object"
+                                    class="oe_stat_button" icon="fa-edit" invisible="invoice_count == 0">
+                                <field string="IMG Invoice" name="invoice_count"
+                                        style="color:green;"
+                                        widget="statinfo"/>
+                            </button>
+                            <button name="action_print_invoice"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-download"
+                                    string="Print IMG Test" invisible="invoice_count == 0"/>
+                        </div>
+                    <div class="oe_title">
+                        <h1 class="d-flex">
+                            <field name="name" string="Name" style='color:#2596be;'/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="department_id"/>
+                            <field name="patient"/>
+                            <field name="request_date"/>
+                            <field name="doctor"/>
+                            <field name ="test_price_tax" style="color: green; font-weight: bold;"/>
+                        </group>
+                        <group>
+                            <field name="image_code"></field>
+                            <field name="test_type" style="color: green; font-weight: bold;"/>
+                            <field name="test_price_currency" invisible="0" style="color: green; font-weight: bold;"/>
+                            <field name = "test_price" widget="monetary" style="color: green; font-weight: bold;"/>
+                            <field name="analysis_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Images">
+                            <group>
+                                <group>
+                                    <field name="has_image1" widget = 'image' string ='Image 1' />
+                                    <field name="has_image2" widget = 'image' string ='Image 2' />
+                                </group>
+                                
+                                <group>
+                                    <field name="has_image3" widget = 'image' string ='Image 3' />
+                                    <field name="has_image4" widget = 'image' string ='Image 4' />
+                                    <!-- <field name="web_cam_image" widget="webcam" string="Capture Image"/> -->
+                                </group>
+                            </group>
+                            
+                            
+                        </page>
+                        <page string="Information">
+                            <field name="test_information" placeholder="..// Fill Image Infromation //.." style="color:#2596be;"/>
+                        </page>
+                    </notebook>
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+</odoo>

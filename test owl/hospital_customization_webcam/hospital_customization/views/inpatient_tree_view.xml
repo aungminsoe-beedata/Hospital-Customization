@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="inpatient__tree_view_inherit" model="ir.ui.view">
+        <field name="name">inpatient_inherit_tree_view</field>
+        <field name="model">hospital.inpatient</field>
+        <field name="inherit_id" ref="base_hospital_management.hospital_inpatient_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="patient_id" widget="many2one_avatar_user"  />
+                
+            </xpath>
+            <xpath expr="//field[@name='discharge_date']" position="after">
+                <field name="is_patient_in_draft" invisible="1"/>
+                <!-- <field name = "inpatient_reg_count"/> -->
+                <field name="state" />
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

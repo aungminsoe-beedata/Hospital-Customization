@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="group_patient_notebook_permission" model="res.groups">
+            <field name="name">Patient NoteBook Hide</field>
+            <field name="comment">You Tick This , Not Visiable Patient NoteBook in the Form View</field>
+        </record>   
+    </data>
+
+</odoo>

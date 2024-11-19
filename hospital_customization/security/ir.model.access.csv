@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_hospital_lab_test_image,lab_test_image.lab_test_image,model_labtest_typeimage,base.group_user,1,1,1,1
+access_hospital_imaging_test_departments,imaging_test_departments.imaging_test_departments,model_imaging_test_departments,base.group_user,1,1,1,1
+access_hospital_imaging_testperform,imaging_testperform.imaging_testperform,model_imaging_testperform,base.group_user,1,1,1,1
+
+
+
+
+

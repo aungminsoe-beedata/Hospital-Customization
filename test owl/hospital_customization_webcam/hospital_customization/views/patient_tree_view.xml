@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="patient_tree_view_inherit" model="ir.ui.view">
+        <field name="name">patient_inherit_tree_view</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base_hospital_management.res_partner_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name = 'name']" position="after">
+                
+                <field name ="inpatient_boolean" string = "Hospital In Patient" widget="boolean_toggle"/>
+                
+            </xpath>
+        </field>
+    </record>
+
+
+    <!-- form view -->
+
+    <record id="patient_form_view_inherit1" model="ir.ui.view">
+        <field name="name">patient_inherit_form_view1</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base_hospital_management.res_partner_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name = 'name']" position="after">
+                <field name="is_patient_in_draft" invisible="1"/>
+                <field name ="attending_doctor" invisible="1"/> 
+                <field name = "inpatient_reg_ids" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name = 'marital_status']" position="after">
+                <field name = "inpatient_reg_count" />
+                <field name ="inpatient_boolean"/>
+            </xpath>
+        </field>
+    </record>
+
+
+
+
+</odoo>

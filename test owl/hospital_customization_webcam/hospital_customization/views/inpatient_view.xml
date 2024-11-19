@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="inpatient_view_inherit" model="ir.ui.view">
+        <field name="name">inpatient_inherit_form_view</field>
+        <field name="model">hospital.inpatient</field>
+        <field name="inherit_id" ref="base_hospital_management.hospital_inpatient_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Replace the patient_id field to display patient_seq and gender -->
+            <xpath expr="//field[@name='patient_id']" position="replace">
+                <field name="patient_id" widget="many2one_avatar_user"/>
+                
+            </xpath>
+          
+        </field>
+    </record>
+</odoo>

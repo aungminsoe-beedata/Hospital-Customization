@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Patient Imaging Invoice Report Action -->
+    <record id="action_imaging_pdf_invoice" model="ir.actions.report">
+        <field name="name">Patient Imaging Invoice</field>
+        <field name="model">imaging.testperform</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hospital_customization.patient_imaging_invoice</field>
+        <field name="report_file">hospital_customization.patient_imaging_invoice</field>
+        <field name="binding_model_id" ref="model_imaging_testperform"/>
+        
+        <field name="paperformat_id" ref="hospital_customization.paperformat_student"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- Patient Imaging Invoice Template -->
+    <template id="patient_imaging_invoice">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.basic_layout">
+                    <!-- <table class = "table table-bordered"> -->
+                        <!-- header -->
+                        <div>
+                            <div style="text-align: left; margin-bottom: 20px;">
+                                <!-- Code in Cyan Color -->
+                                <label>
+                                    <b >Code:</b> 
+                                    <span t-field="doc.name"  style="color: #2596be; font-weight: bold;"/>
+                                </label><br/>
+                                        <!-- Patient Name and Today's Date -->
+                                <label>
+                                    <b>Patient Name:</b> 
+                                    <span t-field="doc.patient.name" />
+                                </label>
+                                <br/>
+                                <label>
+                                    <b>Date:</b> 
+                                    <span t-field="doc.analysis_date"/>
+                                    
+                                </label>
+                                
+                            </div>
+                        </div>
+                        <table class="table table-bordered" style="border: 1px solid black; width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr>
+                                    <th style="border: 1px solid black;">Test Name</th>
+                                    <th style="border: 1px solid black;">Test Code</th>
+                                    <th style="border: 1px solid black;">Department</th>
+                                    
+                                    <th style="border: 1px solid black;">Tax</th>
+                                    <th style="border: 1px solid black;">Currency</th>
+                                    <th style="border: 1px solid black;">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <!-- Test Name -->
+                                    <td style="border: 1px solid black;">
+                                        <span t-field="doc.image_code.name" />
+                                    </td>
+                                    <!-- Test Code -->
+                                    <td style="border: 1px solid black;">
+                                        <span t-field="doc.test_type" />
+                                    </td>
+                                    <!-- Department Name -->
+                                    <td style="border: 1px solid black;">
+                                        <span t-field="doc.department_id.name" />
+                                    </td>
+                                     <!-- Tax -->
+                                     <td style="border: 1px solid black;">
+                                        <span t-field="doc.test_price_tax.name" />
+                                    </td>
+                                    
+                                    <!-- Currency -->
+                                    <td style="border: 1px solid black;">
+                                        <span t-field="doc.test_price_currency.name" />
+                                    </td>
+                                   
+                                    <!-- Price -->
+                                    <td style="border: 1px solid black;">
+                                        <span t-field="doc.test_price" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>        
+                    <table class = "table" >
+                        <tr>
+                           
+                            <th style ="text-align:center; vertical-align:center; width:25%;">
+                                <div style="height:2in; width:2in;">
+                                    
+                                    <span t-field="doc.has_image1"
+                                             t-options="{'widget':'image','style':'height:100; width:100'}"/>
+                                 </div>
+                            </th>
+                            <th style ="text-align:center; vertical-align:center; width:25%;">
+                                <div style="height:2in; width:2in;">
+                                    
+                                    <span t-field="doc.has_image2"
+                                             t-options="{'widget':'image','style':'height:100; width:100'}"/>
+                                 </div>
+                            </th>
+                            <th style ="text-align:center; vertical-align:center; width:25%;">
+                                <div style="height:2in; width:2in;">
+                                    
+                                    <span t-field="doc.has_image3"
+                                             t-options="{'widget':'image','style':'height:100; width:100'}"/>
+                                 </div>
+                            </th>
+                            <th style ="text-align:center; vertical-align:center; width:25%;">
+                                <div style="height:2in; width:2in;">
+                                    
+                                    <span t-field="doc.has_image4"
+                                             t-options="{'widget':'image','style':'height:100; width:100'}"/>
+                                 </div>
+                            </th>
+                        </tr>
+                        
+                    </table>
+                    <div style="text-align: right; margin-bottom: 20px;margin-right:50px;">
+                        <!-- Code in Cyan Color -->
+                        <label>
+                            <b >Doctor:</b> 
+                           
+                        </label><br></br>
+                        <span t-field="doc.doctor.name" />
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    
+
+</odoo>

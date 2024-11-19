@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Camera dialog box template-->
+<templates xml:space="preserve">
+  <t t-name="capture_image_field.camera_dialog" owl="1">
+    <Dialog size="'md'" title="'Camera'" modalRef="modalRef">
+      <!-- Camera selection dropdown -->
+      <div class="mb-3">
+        <label for="cameraSelect">Choose Camera</label>
+        <select id="cameraSelect" class="form-control" t-on-change="onCameraChange">
+          <option t-foreach="this.state.cameras" t-as="camera" t-key="camera.deviceId"
+                  t-att-value="camera.deviceId">
+            <t t-esc="camera.label || 'Unnamed Camera'"/>
+          </option>
+        </select>
+      </div>
+
+      <div class="d-flex justify-content-center mb-3">
+        <!-- Video element to show the camera feed -->
+        <video t-ref="video" width="100%" height="auto" autoplay="true" playsinline="true"/>
+        <!-- Hidden image element to display the captured image -->
+        <img t-ref="image" width="100%" height="auto" class="d-none"/>
+      </div>
+
+      <!-- Dialog footer with action buttons -->
+      <t t-set-slot="footer" owl="1">
+        <!-- Button to take a photo if no image is captured -->
+        <button class="btn btn-primary" t-if="!this.state.img" t-on-click="_confirm">
+          <t t-esc="props.confirmLabel">Take a Photo</t>
+        </button>
+        <!-- Button to save the captured image -->
+        <button class="btn btn-primary" t-if="this.state.img" t-on-click="_save">
+          <t t-esc="props.saveLabel">Save</t>
+        </button>
+        <!-- Button to reset the image and go back to camera mode -->
+        <button class="btn btn-secondary" t-if="this.state.img" t-on-click="_reset">
+          <t t-esc="props.resetLabel">Reset</t>
+        </button>
+        <!-- Button to cancel and close the dialog -->
+        <button class="btn btn-secondary" t-on-click="_cancel">
+          <t t-esc="props.cancelLabel">Cancel</t>
+        </button>
+      </t>
+    </Dialog>
+  </t>
+</templates>

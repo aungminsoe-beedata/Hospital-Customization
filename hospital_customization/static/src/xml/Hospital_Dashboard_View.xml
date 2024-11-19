@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <!--Doctor dashboard template-->
+    <templates id="hospital_dashboard_tags" xml:space="preserve">
+        <t t-name="hospital_dashboard_tags" owl="1">
+            
+            <div class="container mt-5">
+                <h1>Courses</h1>
+                <table class="table table-responsive-lg table-dark">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Ref</td>
+                            <td>Total</td>
+                            <td>State</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="state.courses" t-as="course" t-key="course.ref">
+                            <tr>
+                                <td><t t-esc="course.name"/></td>
+                                <td><t t-esc="course.ref"/></td>
+                                <td><t t-esc="course.amount_total_signed"/></td>
+                                <td><t t-esc="course.state"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2"><strong>Total:</strong></td>
+                            <td>
+                                <t t-esc="state.courses.reduce((sum, course) => sum + course.amount_total_signed, 0)"/>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+         
+        </t>
+    </templates>
